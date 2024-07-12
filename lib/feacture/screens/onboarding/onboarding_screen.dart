@@ -1,9 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
 import 'package:handiman_v0/feacture/screens/onboarding/onboarding_data.dart';
 
@@ -269,7 +266,7 @@ class GridviewText extends StatelessWidget {
       width: size.width * 0.950,
       height: 200,
       child: GridView.count(
-        childAspectRatio: 72.0,
+        childAspectRatio: 7.0,
         crossAxisCount: crossAxisCount,
         children: [
           for (var entry in tags.entries)
