@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handiman_v0/core/config/router/app_router_notifier_provider.dart';
-import 'package:handiman_v0/feacture/screens/onboarding/onboarding_screen.dart';
+import 'package:handiman_v0/feacture/screens/onboarding_screen/onboarding_screen.dart';
 import 'package:handiman_v0/feacture/screens/splash_screen/splash_screen.dart';
 
 
