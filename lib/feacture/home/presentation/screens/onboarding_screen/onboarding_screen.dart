@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:handiman_v0/feacture/screens/onboarding_screen/onboarding_data.dart';
+import 'package:handiman_v0/feacture/home/presentation/screens/onboarding_screen/onboarding_data.dart';
 
 //*provider de indice de onvoarding un solo uso
 final slideIndexProvider = StateProvider<double>((ref) => 0.0);
