@@ -35,7 +35,6 @@ class HomeViewState extends ConsumerState<HomeView> {
               slides: trabajadores,
               title: 'Proximamente',
               subTitle: 'En este mes',
-              // loadNextPage: () =>{ref.read(upcomingMoviesProvider.notifier).loadNextPage()},),
               loadNextPage: () {}
               ),
           ],
