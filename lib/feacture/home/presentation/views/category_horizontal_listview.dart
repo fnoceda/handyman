@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:handiman_v0/core/config/helpers/human_formats.dart';
 import 'package:handiman_v0/feacture/home/domain/entities/card_slide_data.dart';
 
-class MovieHorizontalListView extends StatefulWidget {
+class CategoryHorizontalListView extends StatefulWidget {
   final List<CardSlideData> slides;
   final String? title;
   final String? subTitle;
   final VoidCallback? loadNextPage;
   final IconData? icon;
 
-  const MovieHorizontalListView(
+  const CategoryHorizontalListView(
       {super.key,
       required this.slides,
       this.title,
@@ -19,11 +18,11 @@ class MovieHorizontalListView extends StatefulWidget {
       this.loadNextPage});
 
   @override
-  State<MovieHorizontalListView> createState() =>
-      _MovieHorizontalListViewState();
+  State<CategoryHorizontalListView> createState() =>
+      _CategoryHorizontalListViewState();
 }
 
-class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
+class _CategoryHorizontalListViewState extends State<CategoryHorizontalListView> {
   final scrollcontroller = ScrollController();
 
   @override
@@ -32,7 +31,6 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
 
     scrollcontroller.addListener(() {
       if (widget.loadNextPage == null) return;
-
       if ((scrollcontroller.position.pixels + 200) >=
           scrollcontroller.position.maxScrollExtent) {
         widget.loadNextPage!();
@@ -49,21 +47,24 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 350,
+      height: 190,
       child: Column(
         children: [
           if (widget.title != null || widget.subTitle != null)
             _Title(title: widget.title, subTitle: widget.subTitle, icon: widget.icon,),
           Expanded(
-            child: ListView.builder(
-            controller: scrollcontroller,
-            itemCount: widget.slides.length,
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return FadeInRight(child: _Slide(slide: widget.slides[index]));
-            },
-          ))
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: ListView.builder(
+              controller: scrollcontroller,
+              itemCount: widget.slides.length,
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) {
+                return FadeInRight(child: _Slide(slide: widget.slides[index]));
+              },
+                        ),
+            ))
         ],
       ),
     );
@@ -76,18 +77,21 @@ class _Slide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Column(
+      children: [
         //* image
         Container(
-          width: 133,
-          height: 133,
+          width: 80,
+          height: 80,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: Colors.white),
+              borderRadius: BorderRadius.circular(80), color: Colors.white),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Image(
+              width: 60,
+              height: 60,
               image: AssetImage(slide.backgroundImage),
             ),
           ),
@@ -97,8 +101,7 @@ class _Slide extends StatelessWidget {
           height: 8,
         ),
         //*title
-        SizedBox(
-          width: 150,
+        Center(
           child: Text(
             slide.shortDescription,
             maxLines: 1,

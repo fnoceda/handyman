@@ -3,14 +3,14 @@ import 'package:animate_do/animate_do.dart';
 import 'package:handiman_v0/core/config/helpers/human_formats.dart';
 import 'package:handiman_v0/feacture/home/domain/entities/card_slide_data.dart';
 
-class MovieHorizontalListView extends StatefulWidget {
+class WorkerHorizontalListView extends StatefulWidget {
   final List<CardSlideData> slides;
   final String? title;
   final String? subTitle;
   final VoidCallback? loadNextPage;
   final IconData? icon;
 
-  const MovieHorizontalListView(
+  const WorkerHorizontalListView(
       {super.key,
       required this.slides,
       this.title,
@@ -19,11 +19,11 @@ class MovieHorizontalListView extends StatefulWidget {
       this.loadNextPage});
 
   @override
-  State<MovieHorizontalListView> createState() =>
-      _MovieHorizontalListViewState();
+  State<WorkerHorizontalListView> createState() =>
+      _WorkerHorizontalListViewState();
 }
 
-class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
+class _WorkerHorizontalListViewState extends State<WorkerHorizontalListView> {
   final scrollcontroller = ScrollController();
 
   @override
@@ -49,7 +49,7 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 350,
+      height: 280,
       child: Column(
         children: [
           if (widget.title != null || widget.subTitle != null)
