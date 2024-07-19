@@ -37,6 +37,12 @@ class AppTheme {
       appBarTheme:  AppBarTheme(backgroundColor:background),
       drawerTheme:  DrawerThemeData(backgroundColor:background),
       iconTheme: IconThemeData(color: colorTitleSecondary[selectColorSecondary],size: 25),
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(
+          color: Colors.white,
+          fontFamily: 'sf font'
+          )
+        )
       );
 
   //* copiamos el colortheme para poder aplicar colores y el modo oscuro

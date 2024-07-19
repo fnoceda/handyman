@@ -8,9 +8,9 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 
 List<IconData> iconList = [
   Icons.home_max,
-  Icons.category,
-  Icons.message,
-  Icons.people_alt_outlined,
+  Icons.search,
+  Icons.favorite_border,
+  Icons.account_circle,
 ];
 
 
@@ -95,19 +95,10 @@ class _CustomBottonNavigationState extends State<CustomBottonNavigation> with Ti
             children: [
               Icon(
                 iconList[index],
-                size: 24,
+                size: 30,
                 color: color,
               ),
               const SizedBox(height: 4),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: AutoSizeText(
-                  "brightness $index",
-                  maxLines: 1,
-                  style: TextStyle(color: color),
-                  group: autoSizeGroup,
-                ),
-              ),
             ],
           );
         },
@@ -117,7 +108,7 @@ class _CustomBottonNavigationState extends State<CustomBottonNavigation> with Ti
         notchAndCornersAnimation: borderRadiusAnimation,
         splashSpeedInMilliseconds: 200,
         notchSmoothness: NotchSmoothness.defaultEdge,
-        gapLocation: GapLocation.center,
+        gapLocation: GapLocation.none,
         leftCornerRadius: 0,
         rightCornerRadius: 0,
         onTap: (index) => setState(() => _bottomNavIndex = index),

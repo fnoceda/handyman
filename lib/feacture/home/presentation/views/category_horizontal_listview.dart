@@ -8,17 +8,19 @@ class MovieHorizontalListView extends StatefulWidget {
   final String? title;
   final String? subTitle;
   final VoidCallback? loadNextPage;
+  final IconData? icon;
 
-  const MovieHorizontalListView({
-      super.key,
+  const MovieHorizontalListView(
+      {super.key,
       required this.slides,
       this.title,
+      this.icon,
       this.subTitle,
-      this.loadNextPage
-      });
+      this.loadNextPage});
 
   @override
-  State<MovieHorizontalListView> createState() => _MovieHorizontalListViewState();
+  State<MovieHorizontalListView> createState() =>
+      _MovieHorizontalListViewState();
 }
 
 class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
@@ -29,16 +31,13 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
     super.initState();
 
     scrollcontroller.addListener(() {
+      if (widget.loadNextPage == null) return;
 
-      if(widget.loadNextPage ==null) return;
-
-      if((scrollcontroller.position.pixels + 200) >= scrollcontroller.position.maxScrollExtent ){
+      if ((scrollcontroller.position.pixels + 200) >=
+          scrollcontroller.position.maxScrollExtent) {
         widget.loadNextPage!();
       }
-      
     });
-
-
   }
 
   @override
@@ -54,10 +53,10 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
       child: Column(
         children: [
           if (widget.title != null || widget.subTitle != null)
-            _Title(title: widget.title, subTitle: widget.subTitle),
+            _Title(title: widget.title, subTitle: widget.subTitle, icon: widget.icon,),
           Expanded(
-              child: ListView.builder(
-                controller: scrollcontroller,
+            child: ListView.builder(
+            controller: scrollcontroller,
             itemCount: widget.slides.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
@@ -77,45 +76,25 @@ class _Slide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme;
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         //* image
-        SizedBox(
-          width: 150,
+        Container(
+          width: 133,
+          height: 133,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), color: Colors.white),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: 
-            // Image.network(
-            //   slide.backgroundImage,
-            //   fit: BoxFit.cover,
-            //   width: 150,
-            //   loadingBuilder: (context, child, loadingProgress) {
-            //     if (loadingProgress != null) {
-            //       return const Padding(
-            //         padding: EdgeInsets.all(8.0),
-            //         child: Center(
-            //           child: CircularProgressIndicator(
-            //             strokeWidth: 2,
-            //           ),
-            //         ),
-            //       );
-            //     }
-            //     return GestureDetector(
-            //       // onTap: ()=> context.push('/home/0/movie/${movie.id}'),
-            //       onTap: () {},
-            //       child:  FadeIn(child: child),
-            //     );
-                
-            //   },
-            // ),
-            Image(image: AssetImage(slide.backgroundImage)),
+            child: Image(
+              image: AssetImage(slide.backgroundImage),
+            ),
           ),
         ),
         //* sizebox
         const SizedBox(
-          height: 5,
+          height: 8,
         ),
         //*title
         SizedBox(
@@ -123,34 +102,9 @@ class _Slide extends StatelessWidget {
           child: Text(
             slide.shortDescription,
             maxLines: 1,
-            style: textStyle.titleSmall,
+            style: const TextStyle(color: Colors.white),
           ),
-        ),
-        //*Rating
-        SizedBox(
-          width: 150,
-          child: Row(
-            children: [
-              Icon(Icons.star_half_sharp, color: Colors.yellow.shade800),
-              const SizedBox(
-                width: 3,
-              ),
-              Text(
-                '${slide.qualification}',
-                style: textStyle.bodyMedium
-                    ?.copyWith(color: Colors.yellow.shade800),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-             const Spacer(),
-              Text(
-                HumanFormats.number(slide.qualification),
-                style: textStyle.bodySmall,
-              )
-            ],
-          ),
-        )
+        ),        
       ]),
     );
   }
@@ -159,13 +113,14 @@ class _Slide extends StatelessWidget {
 class _Title extends StatelessWidget {
   final String? title;
   final String? subTitle;
-  const _Title({this.title, this.subTitle});
+  final IconData? icon;
+  const _Title({this.title, this.subTitle,  this.icon});
 
   @override
   Widget build(BuildContext context) {
     final titleStile = Theme.of(context).textTheme.titleLarge;
     return Container(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 10, bottom: 10),
       margin: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(children: [
         if (title != null)
@@ -173,9 +128,12 @@ class _Title extends StatelessWidget {
             title!,
             style: titleStile,
           ),
+        const SizedBox(width: 7),
+        if (icon != null)
+        Icon(icon),
         const Spacer(),
         if (subTitle != null)
-          FilledButton.tonal(
+              FilledButton.tonal(
               style: const ButtonStyle(visualDensity: VisualDensity.compact),
               onPressed: () {},
               child: Text(subTitle!)),

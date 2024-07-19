@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handiman_v0/feacture/home/domain/entities/pruebas/card_slide_profesional.dart';
-import 'package:handiman_v0/feacture/home/presentation/views/movie_horizontal_listview.dart';
+import 'package:handiman_v0/feacture/home/presentation/views/worker_horizontal_listview.dart';
 import 'package:handiman_v0/feacture/shared/custom_appbar/custon_appbar.dart';
 
 
@@ -33,13 +33,14 @@ class HomeViewState extends ConsumerState<HomeView> {
           children: [
             MovieHorizontalListView(
               slides: trabajadores,
-              title: 'Proximamente',
-              subTitle: 'En este mes',
+              title: 'Daily Deals',
+              icon: Icons.arrow_circle_right,
               loadNextPage: () {}
               ),
+              
           ],
         );
-      }, childCount: 1))
+      }, childCount: 1)),
     ]);
   }
 }
