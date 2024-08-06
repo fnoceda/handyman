@@ -9,13 +9,14 @@ class CategoryHorizontalListView extends StatefulWidget {
   final VoidCallback? loadNextPage;
   final IconData? icon;
 
-  const CategoryHorizontalListView(
-      {super.key,
+  const CategoryHorizontalListView({
+      super.key,
       required this.slides,
       this.title,
       this.icon,
       this.subTitle,
-      this.loadNextPage});
+      this.loadNextPage
+      });
 
   @override
   State<CategoryHorizontalListView> createState() =>
