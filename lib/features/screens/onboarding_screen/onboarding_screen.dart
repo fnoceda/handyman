@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:handiman_v0/feacture/screens/onboarding_screen/onboarding_data.dart';
+import 'package:handiman_v0/features/screens/onboarding_screen/onboarding_data.dart';
 
 //*provider de indice de onvoarding un solo uso
 final slideIndexProvider = StateProvider<double>((ref) => 0.0);
@@ -102,7 +102,7 @@ class _GetStartedButton extends StatelessWidget {
             child: FilledButton.tonal(
               style: const ButtonStyle(
                   backgroundColor:
-                      MaterialStatePropertyAll<Color>(Color(0xFFFEBC11))),
+                      WidgetStatePropertyAll<Color>(Color(0xFFFEBC11))),
               child: const Center(
                 child: Row(children: [
                   Text(
@@ -138,7 +138,7 @@ class _ButtonContinue extends StatelessWidget {
             child: FilledButton.tonal(
               style: const ButtonStyle(
                   backgroundColor:
-                      MaterialStatePropertyAll<Color>(Color(0xFFFEBC11))),
+                      WidgetStatePropertyAll<Color>(Color(0xFFFEBC11))),
               child: const Row(children: [
                 Text(
                   'Continue',
@@ -245,19 +245,23 @@ class _Slide extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            if (slide.tags != null) GridviewText(tags: slide.tags!,crossAxisCount: slide.crossAxisCount!,)
+            if (slide.tags != null)
+              GridviewText(
+                tags: slide.tags!,
+                crossAxisCount: slide.crossAxisCount!,
+              )
           ],
         ),
       ),
     );
   }
-
 }
 
 class GridviewText extends StatelessWidget {
   final Map<String, Icon> tags;
-  final int  crossAxisCount;
-  const GridviewText({super.key, required this.tags, required this.crossAxisCount});
+  final int crossAxisCount;
+  const GridviewText(
+      {super.key, required this.tags, required this.crossAxisCount});
 
   @override
   Widget build(BuildContext context) {

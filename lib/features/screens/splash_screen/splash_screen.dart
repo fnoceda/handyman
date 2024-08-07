@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:handiman_v0/feacture/shared/logotype/handy_man_logotype.dart';
+import 'package:handiman_v0/features/shared/logotype/handy_man_logotype.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
