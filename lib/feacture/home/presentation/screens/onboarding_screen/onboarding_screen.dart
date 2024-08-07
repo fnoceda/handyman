@@ -4,10 +4,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:handiman_v0/feacture/home/presentation/screens/onboarding_screen/onboarding_data.dart';
 
-
 //*provider de indice de onvoarding un solo uso
 final slideIndexProvider = StateProvider<double>((ref) => 0.0);
 //*
+
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 

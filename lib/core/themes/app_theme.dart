@@ -5,17 +5,8 @@ import 'package:flutter/material.dart';
 * hacemos constante para que se pueda instanciar desde los providers
 */
 const colorListProviderReference = <Color>[
-  Color.fromARGB(255, 13, 71, 161),
-  Colors.black,
-  Colors.yellow,
-  Colors.amber,
-  Colors.indigo,
-  Colors.blue,
   Colors.white,
-  Colors.red,
-  Colors.purple,
-  Colors.green,
-  Colors.orange,
+  Colors.yellow,
 ];
 const colorTitleSecondary = <Color>[
   Colors.white,
@@ -32,7 +23,7 @@ class AppTheme {
     this.selectColor = 0, 
     this.selectColorSecondary = 0,
     this.isDarkMode = false,
-    this.background = const Color(0xFFF2F3F8),
+    this.background = const Color(0xFF111111),
     }): assert(selectColor >= 0, 'Selected Color must greater then 0'),
         assert(selectColor < colorListProviderReference.length,'Selected Color must be less or equal than ${colorListProviderReference.length - 1}'),
         assert(selectColorSecondary >= 0, 'Selected Color must greater then 0'),
@@ -46,6 +37,12 @@ class AppTheme {
       appBarTheme:  AppBarTheme(backgroundColor:background),
       drawerTheme:  DrawerThemeData(backgroundColor:background),
       iconTheme: IconThemeData(color: colorTitleSecondary[selectColorSecondary],size: 25),
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(
+          color: Colors.white,
+          fontFamily: 'sf font'
+          )
+        )
       );
 
   //* copiamos el colortheme para poder aplicar colores y el modo oscuro
