@@ -1,13 +1,10 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handiman_v0/core/config/router/app_router_notifier_provider.dart';
-import 'package:handiman_v0/feacture/auth/presentation/screens/login_screen.dart';
-import 'package:handiman_v0/feacture/home/presentation/screens/home_screen/home_screen.dart';
-
-
-
-import 'package:handiman_v0/features/screens/onboarding_screen/onboarding_screen.dart';
-import 'package:handiman_v0/features/screens/splash_screen/splash_screen.dart';
+import 'package:handiman_v0/features/auth/presentation/screens/login_screen.dart';
+import 'package:handiman_v0/features/home/presentation/screens/home_screen/home_screen.dart';
+import 'package:handiman_v0/features/initial_loading/presentation/screens/onboarding_screen/onboarding_screen.dart';
+import 'package:handiman_v0/features/initial_loading/presentation/screens/splash_screen/splash_screen.dart';
 
 final goRouterProvider = Provider((ref) {
   final goRouterNotifier = ref.read(goRouterNotifierProvider);
