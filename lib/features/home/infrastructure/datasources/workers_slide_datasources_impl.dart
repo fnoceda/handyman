@@ -13,13 +13,14 @@ class WorkersSlideDatasourcesImpl extends SlideWorkerDatasources {
   @override
   Future<List<CardWorkerSlideData>> getAllWorkers() async {
     try {
-      final response = await dio.get<List>('/products');
+      final response = await dio.get('/workers');
       final List<CardWorkerSlideData> slides = [];
-      for (final slide in response.data ?? []) {
+      for (final slide in response.data['dat'] ?? []) {
         slides.add(WorkersSlideMapper.jsonToEntity(slide));
       }
       return slides;
     } catch (e) {
+      print(e);
       throw Exception();
     }
   }

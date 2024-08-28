@@ -6,6 +6,11 @@ class HomeScreen extends StatelessWidget {
  
   const HomeScreen({super.key});
 
+//*tod implementar
+//final goRouterNotifier = ref.watch(slideWorkersProvider.notifier).loadProduct();
+
+
+
   @override
   Widget build(BuildContext context) {
     return  const Scaffold(

@@ -7,8 +7,7 @@ class WorkersSlideRepositoriesImpl extends SlideWorkerRepositories {
   WorkersSlideRepositoriesImpl({required this.datasources});
   @override
   Future<List<CardWorkerSlideData>> getAllWorkers() {
-    // TODO: implement getAllWorkers
-    throw UnimplementedError();
+      return datasources.getAllWorkers();
   }
 
   @override
