@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:handiman_v0/core/config/environment/environment.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:handiman_v0/core/config/router/app_router.dart';
@@ -19,20 +20,18 @@ class MyApp extends ConsumerWidget {
     final AppTheme appTheme = ref.watch(themeNotifierProvider);
     final appRouter = ref.watch(goRouterProvider);
     final size = MediaQuery.of(context).size;
-    return 
-    // ScreenUtilInit(
-        // designSize:  Size(size.width, size.height),
-        // minTextAdapt: true,
-        // splitScreenMode: true,
-        // builder: (_, child) {
-        //   return 
-          MaterialApp.router(
+    return ScreenUtilInit(
+        designSize:  Size(size.width, size.height),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          return  MaterialApp.router(
             routerConfig: appRouter,
             debugShowCheckedModeBanner: false,
             title: 'Handyman example',
             theme: appTheme.getTheme(),
           );
-    //     }
-    // );
+        }
+    );
   }
 }

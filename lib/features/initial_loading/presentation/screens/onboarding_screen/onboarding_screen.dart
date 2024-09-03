@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:handiman_v0/features/initial_loading/presentation/screens/onboarding_screen/onboarding_data.dart';
 
@@ -58,6 +59,7 @@ class OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           //*button
           endReached ? const _GetStartedButton() : const _ButtonContinue(),
           const _Dots()
+          //prueba
         ],
       ),
     );
@@ -90,34 +92,49 @@ class _GetStartedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-        left: 130,
-        bottom: 20,
-        child: FadeInRight(
-          child: Container(
-            decoration: const BoxDecoration(
+    return Stack(
+      children: [
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: FadeInRight(
+            child: Container(
+              decoration: const BoxDecoration(
                 color: Color(0xFFFEBC11),
-                borderRadius: BorderRadius.all(Radius.circular(10))),
-            width: 160,
-            height: 64,
-            child: FilledButton.tonal(
-              style: const ButtonStyle(
-                  backgroundColor:
-                      WidgetStatePropertyAll<Color>(Color(0xFFFEBC11))),
-              child: const Center(
-                child: Row(children: [
-                  Text(
-                    'Get Started',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ]),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              onPressed: () => context.pop(),
+              width: 160,
+              height: 64,
+              child: FilledButton.tonal(
+                style: const ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll<Color>(Color(0xFFFEBC11)),
+                ),
+                child: const Center(
+                  child: Row(
+                    children: [
+                      Text(
+                        'Get Started',
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                onPressed: () => context.pop(),
+              ),
             ),
           ),
-        ));
+        ),
+        // Puedes agregar otros widgets aquí si es necesario
+      ],
+    );
   }
 }
+
+
+
+
+
+
+
 
 class _ButtonContinue extends StatelessWidget {
   const _ButtonContinue();
@@ -126,7 +143,7 @@ class _ButtonContinue extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Positioned(
-        left: (size.width * 0.550),
+        right: (size.width * 0.050),
         top: (size.height * 0.900),
         child: FadeInRight(
           from: 15,
@@ -141,15 +158,15 @@ class _ButtonContinue extends StatelessWidget {
               style: const ButtonStyle(
                   backgroundColor:
                       WidgetStatePropertyAll<Color>(Color(0xFFFEBC11))),
-              child: const Row(children: [
+              child:  Row(children: [
                 Text(
                   'Continue',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(width: 9),
-                Icon(Icons.arrow_forward_outlined)
+                const SizedBox(width: 9),
+                const Icon(Icons.arrow_forward_outlined)
               ]),
-              onPressed: () => context.pop(),
+              onPressed: () {},
             ),
           ),
         ));
@@ -224,9 +241,9 @@ class _Slide extends StatelessWidget {
             Flexible(
               child: Text(
                 slide.title ?? '',
-                style: const TextStyle(
+                style:  TextStyle(
                     fontFamily: 'sf font',
-                    fontSize: 21,
+                    fontSize: 21.sp,
                     decoration: TextDecoration.none,
                     color: Colors.white),
               ),
@@ -237,8 +254,8 @@ class _Slide extends StatelessWidget {
             Flexible(
               child: Text(
                 slide.caption ?? '',
-                style: const TextStyle(
-                    fontSize: 13,
+                style:  TextStyle(
+                    fontSize: 13.sp,
                     decoration: TextDecoration.none,
                     color: Colors.white),
               ),
@@ -296,8 +313,8 @@ class GridviewText extends StatelessWidget {
                 entry.value,
                 Text(
                   entry.key,
-                  style: const TextStyle(
-                      fontSize: 13,
+                  style:  TextStyle(
+                      fontSize: 13.sp,
                       decoration: TextDecoration.none,
                       color: Colors.white),
                 )

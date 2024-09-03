@@ -54,7 +54,7 @@ List<SlideInfo> slidesInfo = [
         'Roofing Services': const Icon(Icons.check, color: Colors.yellow),
       }),
   SlideInfo(
-      index: 2,
+      index: 3,
       title: 'Secure Payments',
       caption: '',
       imageUrl: 'assets/images/onboarding4.png',
@@ -66,7 +66,7 @@ List<SlideInfo> slidesInfo = [
         'Face Recognition': const Icon(Icons.face, color: Colors.white),
       }),
   SlideInfo(
-      index: 2,
+      index: 4,
       title: 'Make Your Own Handyman Account',
       caption: '',
       imageUrl: 'assets/images/onboarding5.png',
