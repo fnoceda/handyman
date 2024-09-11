@@ -6,8 +6,8 @@ class WorkersSlideRepositoriesImpl extends SlideWorkerRepositories {
   final SlideWorkerDatasources datasources;
   WorkersSlideRepositoriesImpl({required this.datasources});
   @override
-  Future<List<CardWorkerSlideData>> getAllWorkers() {
-      return datasources.getAllWorkers();
+  Future<List<CardWorkerSlideData>> getAllWorkers({int limit = 10 ,int offset = 0}) {
+      return datasources.getAllWorkers(limit: limit,offset: offset);
   }
 
   @override
