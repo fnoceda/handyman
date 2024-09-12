@@ -10,7 +10,7 @@ import 'package:handiman_v0/features/initial_loading/presentation/screens/splash
 final goRouterProvider = Provider((ref) {
   final goRouterNotifier = ref.read(goRouterNotifierProvider);
   return GoRouter(
-    initialLocation: '/home',
+    initialLocation: '/pruebas',
     refreshListenable: goRouterNotifier,
     routes: [
       //pruebas

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:handiman_v0/features/shared/pricigns/pricigns_card.dart';
-import 'package:handiman_v0/features/shared/pricigns/pricing_card_chatgpt.dart';
+import 'package:handiman_v0/features/shared/pricigns/pricing_card.dart';
 
 class PruebaPrecios extends StatelessWidget {
   const PruebaPrecios({super.key});
@@ -9,20 +8,25 @@ class PruebaPrecios extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
-      child: SizedBox(
-        width: size.width * 0.850,
-        height: size.height * 0.8,
-        child: PricingCardChatGPT(
-          features: const [
-              'Unlimited Clients',
-              'Receive Messages from Your Clients',
-              'Unlimited Fields',
-              'Promoting',
-              'See All Your Clients Reviews',
-              'Tool Rentals',
-            ],
-        )))
-      );
+        body: Center(
+            child: SizedBox(
+                width: size.width * 0.850,
+                height: size.height * 0.8,
+                child: PricingCard(
+                  slideData: data,
+                ))));
   }
 }
+
+MapSlideData data = MapSlideData(
+    planName: 'Enterprise',
+    price: 49.50,
+    listData: [
+      MessageOption(text: 'Unlimited Clients'),
+      MessageOption(
+          text: 'Receive Messages from Your Clients' ),
+      MessageOption(text: 'Unlimited Fields'),
+      MessageOption(text: 'Promoting'),
+      MessageOption(text: 'See All Your Clients Reviews'),
+      MessageOption(text: 'Tool Rentals' ),
+    ]);
